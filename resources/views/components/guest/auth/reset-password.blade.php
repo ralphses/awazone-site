@@ -37,7 +37,7 @@
                   <div class="tp-login-wrapper login-space d-flex justify-content-center">
                      <div id="login" class="tplogin">
                         <div class="tplogin__title">
-                           <h3 class="tp-login-title">Login your Account</h3>
+                           <h3 class="tp-login-title">Reset Your Password</h3>
                         </div>
                         <div class="tplogin__form">
                            <form action="{{ route('password.store') }}" method="POST">

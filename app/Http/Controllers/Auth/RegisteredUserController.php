@@ -40,13 +40,14 @@ class RegisteredUserController extends Controller
 
         $userAddress = UserAddress::create([]);
         
-        $userRole = Roles::find(1) ?? Roles::create(['name' => 'user', 'token' => uniqid()]);
+        $userRole = Roles::where('name', 'user')->get()->first() ?? Roles::create(['name' => 'user', 'token' => uniqid()]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'address_id' => $userAddress->id
+            'address_id' => $userAddress->id,
+            'roles_id' => $userRole->id
         ]);
 
         event(new Registered($user));
