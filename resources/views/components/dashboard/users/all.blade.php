@@ -2,9 +2,14 @@
   <div class="block-header block-header-default">
     <h3 class="block-title">Partial Table</h3>
     <div class="block-options">
-      <button type="button" class="btn-block-option">
-        <i class="si si-settings"></i>
-      </button>
+      <form class="d-none d-md-inline-block" action="{{ route('users.search') }}" method="GET">
+        <div class="input-group input-group-sm">
+          <input type="text" class="form-control form-control-alt" placeholder="Search.." id="page-header-search-input2" name="query">
+          <span class="input-group-text border-0">
+            <i class="fa fa-fw fa-search"></i>
+          </span>
+        </div>
+      </form>
     </div>
   </div>
 
@@ -31,10 +36,10 @@
 
         <tr>
           <td class="text-center">
-            <img class="img-avatar img-avatar48" src="{{ asset($user->image_path) }}" alt="">
+            <img class="img-avatar img-avatar48" src="{{ Storage::url($user->image_path) }}" alt="">
           </td>
           <td class="fw-semibold fs-sm">
-            <a href="be_pages_generic_profile.html">{{ $user->name }}</a>
+            {{ $user->name }}
           </td>
           <td class="d-none d-md-table-cell fs-sm">{{ $user->email }}</td>
           <td class="d-none d-sm-table-cell">
@@ -51,12 +56,30 @@
           @endif
           <td class="text-center">
             <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit" data-bs-original-title="Edit">
-                <i class="fa fa-fw fa-pencil-alt"></i>
+             
+              <a href="{{ route('users.show', ['id' => $user->id]) }}">
+                <button type="button" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Assign Role" data-bs-original-title="Assign Role">
+                  <i class="fa fa-fw fa-pencil-alt"></i>
+                </button>
+              </a>
+
+              <a href="{{ route('users.add.role', ['id' => $user->id]) }}">
+                <button type="button" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit" data-bs-original-title="Edit">
+                  <i class="fa fa-fw fa-user-alt"></i>
+                </button>
+              </a>
+
+             <form action="{{ route('user.status', ['id' => $user->id]) }}" method="POST">
+              @csrf
+              @method('PATCH')
+              <button type="submit" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Delete" data-bs-original-title="Delete">
+                @if ($user->is_locked)
+                  <i class="fa fa-fw fa-check"></i>
+                @else
+                  <i class="fa fa-fw fa-times"></i>
+                @endif
               </button>
-              <button type="button" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Delete" data-bs-original-title="Delete">
-                <i class="fa fa-fw fa-times"></i>
-              </button>
+            </form>
             </div>
           </td>
         </tr>

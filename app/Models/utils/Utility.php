@@ -4,7 +4,7 @@ namespace App\Models\utils;
 
 class Utility {
 
-    public const USER_ABILITIES = [
+    public const USER_AUTHORITIES = [
         'authority' => [
             'authority_view',
             'authority_create',

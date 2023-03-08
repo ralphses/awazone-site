@@ -55,9 +55,9 @@ class UserKycController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(UserKyc $userKyc)
+    public function show(int $id)
     {
-        //
+        return view('dashboard.users.kyc.view', ['kyc' => UserKyc::find($id)]);
     }
 
     /**
@@ -71,16 +71,32 @@ class UserKycController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, UserKyc $userKyc)
+    public function update(Request $request)
     {
-        //
+        try {
+            $userKyc = UserKyc::find($request->id);
+
+            $userKyc->update([
+                'verified_on' => date('Y-m-d')
+            ]);
+        } catch (\Throwable $th) {
+            return back();
+        }
+
+        return redirect()->route('kyc.all');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(UserKyc $userKyc)
+    public function destroy(Request $request)
     {
-        //
+        try {
+            UserKyc::destroy($request->id);
+            return redirect()->route('kyc.all');
+        } catch (\Throwable $th) {
+            return back();
+        }
+        
     }
 }

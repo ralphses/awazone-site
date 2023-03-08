@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Roles;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,9 @@ class UserAccountController extends Controller
      * @param  int $roleId
      * @return \Illuminate\View\View
      */
-    public function index(Request $request, int $roleId = 0) {
+    public function index(Request $request) {
+
+        $roleId = $request->get('roleId') ?? 0;
 
         //Get values for sorting and ordering if defined
         $sortBy = $request->get('sort') ?? 'name';
@@ -24,7 +27,7 @@ class UserAccountController extends Controller
 
         //Find users based on criteria above
         $users = ($roleId > 0) ? User::where('roles_id', $roleId)
-                ->sortBy($sortBy, $orderBy)
+                ->orderBy($sortBy, $orderBy)
                 ->paginate(10) 
                 : 
                 User::orderBy($sortBy, $orderBy)
@@ -36,7 +39,7 @@ class UserAccountController extends Controller
 
     }
 
-    public function profile(Request $request) {
+    public function profile() {
 
         return view('dashboard.users.profile', ['user' => Auth::user()]);
     }
@@ -70,4 +73,53 @@ class UserAccountController extends Controller
         
         return redirect()->route('dashboard.home');
     }
+
+    public function search(Request $request) {
+        $query = $request->get('query');
+
+        $users = User::where('name', 'LIKE', '%'. $query .'%')
+                    ->orWhere('email', 'LIKE', '%'. $query .'%')
+                    ->paginate(10);
+
+        $pages = $users->getUrlRange(1, $users->lastPage());
+        
+        return view('dashboard.users.all', ['users' => $users, 'pages' => $pages]);
+    }
+
+    public function assignRole(Request $request) {
+        if($request->method() == "POST") {
+            try {
+                User::find($request->id)->update(['roles_id' => $request->user_role]);
+                return redirect()->route('users.all');
+            } catch (\Throwable $th) {
+                return back();
+            }
+        }
+        return view('dashboard.users.assign-role', ['roles' => Roles::all(), 'user' => User::find($request->id)]);
+    }
+
+    public function edit(Request $request) {
+
+        try {
+            return view('dashboard.users.show', ['user' => User::find($request->id)]);
+
+        } catch (\Throwable $th) {
+            return back();
+        }
+    }
+
+    public function status(Request $request) {
+
+        try {
+
+            $user = User::find($request->id);
+            $user->update(['is_locked' => !$user->is_locked]);
+
+            return redirect()->route('users.all');
+
+        } catch (\Throwable $th) {
+            return back();
+        }
+    }
+    
 }

@@ -4,9 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class UserUnlocked
+class AccountOpen
 {
     /**
      * Handle an incoming request.
@@ -15,8 +16,9 @@ class UserUnlocked
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if($request->user()->is_locked AND !$request->user()->date_of_birth) {
-            return redirect()->route('user.profile');
+        if($request->user()->is_locked) {
+            Auth::logout();
+            return redirect()->route('password.request')->with('account_locked', 'Account Locked!');
         }
         return $next($request);
     }

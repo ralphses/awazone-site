@@ -11,7 +11,7 @@
             <div class="row">
                <div class="col-xxl-12">
                   <div class="breadcrumb__content text-center">
-                     <h3 class="breadcrumb__title">Login Page</h3>
+                     <h3 class="breadcrumb__title">New Password</h3>
                      <div class="breadcrumb__list">
                         <span><a href="#">Home</a></span>
                         <span class="dvdr"><i class="fa fa-angle-right"></i></span>
@@ -37,7 +37,7 @@
                   <div class="tp-login-wrapper login-space d-flex justify-content-center">
                      <div id="login" class="tplogin">
                         <div class="tplogin__title">
-                           <h3 class="tp-login-title">Reset Your Password</h3>
+                           <h3 class="tp-login-title">New Password</h3>
                         </div>
                         <div class="tplogin__form">
                            <form action="{{ route('password.store') }}" method="POST">

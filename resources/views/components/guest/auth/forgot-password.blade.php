@@ -11,7 +11,7 @@
             <div class="row">
                <div class="col-xxl-12">
                   <div class="breadcrumb__content text-center">
-                     <h3 class="breadcrumb__title">Login Page</h3>
+                     <h3 class="breadcrumb__title">Reset Password Page</h3>
                      <div class="breadcrumb__list">
                         <span><a href="#">Home</a></span>
                         <span class="dvdr"><i class="fa fa-angle-right"></i></span>
@@ -37,7 +37,11 @@
                   <div class="tp-login-wrapper login-space d-flex justify-content-center">
                      <div id="login" class="tplogin">
                         <div class="tplogin__title">
-                           <h3 class="tp-login-title">Get New Password</h3>
+                           @if (session('account_locked'))
+                              <h5 class="text-red-500">{{ session()->get('account_locked') }}</h5>
+                           @else
+                              <h3 class="tp-login-title">Get New Password</h3>
+                           @endif
                         </div>
                         <div class="tplogin__form">
                            <form action="{{ route('password.email') }}" method="POST">
