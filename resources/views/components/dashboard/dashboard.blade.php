@@ -5,7 +5,7 @@
         <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center mt-5 mb-2 text-center text-sm-start">
           <div class="flex-grow-1">
             <h1 class="fw-semibold text-white mb-0">Dashboard</h1>
-            <h2 class="h4 fw-normal text-white-75 mb-0">Welcome Administrator</h2>
+            <h2 class="h4 fw-normal text-white-75 mb-0">Welcome {{ Auth::user()->name }}</h2>
           </div>
           <div class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3">
             <span class="d-inline-block">

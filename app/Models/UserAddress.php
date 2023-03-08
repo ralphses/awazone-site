@@ -16,7 +16,10 @@ class UserAddress extends Model
         'state',
         'province',
         'user_id',
-        'country'
+        'country',
+        'user_id'
     ];
 
+    
+ 
 }

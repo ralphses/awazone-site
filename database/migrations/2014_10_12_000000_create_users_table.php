@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('roles_id');
-            $table->unsignedBigInteger('address_id');
 
 
             $table->string('name');
@@ -29,10 +28,9 @@ return new class extends Migration
 
             $table->date('date_of_birth')->nullable(true);
 
-            $table->boolean('is_locked')->default(false);
+            $table->boolean('is_locked')->default(true);
 
             $table->foreign('roles_id')->references('id')->on('roles')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreign('address_id')->references('id')->on('user_addresses')->cascadeOnDelete()->cascadeOnUpdate();
 
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

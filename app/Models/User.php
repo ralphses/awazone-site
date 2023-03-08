@@ -30,7 +30,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'referral_code',
         'roles_id',
         'main_currency',
-        'is_locked'
+        'is_locked',
     ];
 
     /**
@@ -59,4 +59,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function address() {
         return $this->hasOne(UserAddress::class);
     }
+
+    public function userKyc() {
+        return $this->hasOne(UserKyc::class);
+    }
+
+
 }

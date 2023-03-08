@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserAccountController;
+use App\Http\Controllers\UserKycController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,7 +43,33 @@ Route::prefix('/aibopay')->group(function() {
 Route::prefix('/dashboard')->middleware(['auth', 'verified'])->group(function() {
 
     Route::get('/', [DashboardController::class, 'index'])
-    ->name('dashboard.home');
+        ->middleware('user.unlocked')
+        ->name('dashboard.home');
+
+    Route::prefix('/users')->group(function() {
+
+        Route::get('/profile', [UserAccountController::class, 'profile'])
+            ->name('user.profile');
+
+        Route::patch('/profile/update', [UserAccountController::class, 'update'])
+            ->name('user.update');
+
+        Route::get('/', [UserAccountController::class, 'index'])
+            ->middleware('user.unlocked')
+            ->name('users.all');
+
+        Route::prefix('/kyc')->middleware('user.unlocked')->group(function() {
+
+            Route::get('/', [UserKycController::class, 'index'])
+                ->name('kyc.all');
+            
+            Route::get('/add', [UserKycController::class, 'create'])
+                ->name('kyc.add');
+            
+            Route::post('/add', [UserKycController::class, 'store'])
+                ->name('kyc.store');
+        });
+    });
 
 });
 

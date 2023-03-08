@@ -14,7 +14,7 @@ class GuestLayout extends Component
      public function __construct(string $title)
      {
         $this->title = $title;
-        // $this->metaData = $metaData;
+      
      }
     /**
      * Get the view / contents that represents the component.

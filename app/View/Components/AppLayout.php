@@ -13,6 +13,8 @@ class AppLayout extends Component
     public function __construct(string $title)
     {
         $this->title = $title;
+
+    
     }
     /**
      * Get the view / contents that represents the component.
