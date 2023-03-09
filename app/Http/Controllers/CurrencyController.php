@@ -56,30 +56,6 @@ class CurrencyController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Currency $currency)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Currency $currency)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Currency $currency)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      */
     public function destroy(Request $request)

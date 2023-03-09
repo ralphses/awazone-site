@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AibopayAccountController;
 use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExchangeRateController;
@@ -148,6 +149,13 @@ Route::prefix('/dashboard')->middleware(['auth', 'verified', 'account_open'])->g
             Route::delete('/remove/{id}', [RolesController::class, 'destroy'])
                 ->name('roles.remove');
         });
+    });
+
+    Route::prefix('/aibopay')->group(function() {
+
+        Route::get('/', [AibopayAccountController::class, 'index'])
+            ->name('aibopay.all');
+        
     });
 
 });

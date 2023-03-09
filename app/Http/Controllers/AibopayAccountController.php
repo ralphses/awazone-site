@@ -12,7 +12,10 @@ class AibopayAccountController extends Controller
      */
     public function index()
     {
-        //
+        $accounts = AibopayAccount::paginate(10);
+        $pages = $accounts->getUrlRange(1, $accounts->lastPage());
+
+        // return view('')
     }
 
     /**

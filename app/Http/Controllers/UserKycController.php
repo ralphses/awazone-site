@@ -60,14 +60,7 @@ class UserKycController extends Controller
         return view('dashboard.users.kyc.view', ['kyc' => UserKyc::find($id), 'types' => Utility::KYC_DOC_TYPE]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(UserKyc $userKyc)
-    {
-        //
-    }
-
+   
     /**
      * Update the specified resource in storage.
      */
