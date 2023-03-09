@@ -57,7 +57,7 @@ class UserKycController extends Controller
      */
     public function show(int $id)
     {
-        return view('dashboard.users.kyc.view', ['kyc' => UserKyc::find($id)]);
+        return view('dashboard.users.kyc.view', ['kyc' => UserKyc::find($id), 'types' => Utility::KYC_DOC_TYPE]);
     }
 
     /**

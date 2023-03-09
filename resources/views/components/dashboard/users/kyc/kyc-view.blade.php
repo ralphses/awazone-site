@@ -34,7 +34,7 @@
 
             <div class="mb-4">
                 <label class="form-label" for="example-file-input">Type</label>
-                <input class="form-control" type="text" value="{{ \App\Models\Utils\Utility::KYC_DOC_TYPE[$kyc->type] }}" id="example-file-input" disabled>
+                <input class="form-control" type="text" value="{{ $types[$kyc->type] }}" id="example-file-input" disabled>
             </div>
            
         </div>

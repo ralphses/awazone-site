@@ -9,12 +9,14 @@ use Illuminate\View\Component;
 class KycView extends Component
 {
     public $kyc;
+    public $types;
     /**
      * Create a new component instance.
      */
-    public function __construct($kyc)
+    public function __construct($kyc, $types)
     {
         $this->kyc = $kyc;
+        $this->types = $types;
     }
 
     /**
