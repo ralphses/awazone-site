@@ -27,7 +27,7 @@ class UserKycController extends Controller
      */
     public function create()
     {
-        return view('dashboard.users.kyc.add');
+        return view('dashboard.users.kyc.add', ['types' => Utility::KYC_DOC_TYPE]);
     }
 
     /**

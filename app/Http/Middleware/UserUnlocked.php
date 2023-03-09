@@ -15,7 +15,7 @@ class UserUnlocked
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if($request->user()->is_locked AND !$request->user()->date_of_birth) {
+        if(!$request->user()->date_of_birth) {
             return redirect()->route('user.profile');
         }
         return $next($request);

@@ -45,7 +45,7 @@
                     <p style="color: red; font-size: medium">{{$errors->first('authorities')}}</p>
                 @endif
 
-                @foreach (\App\Models\Utils\Utility::USER_AUTHORITIES as $key => $authorities)
+                @foreach ($userauthorities as $key => $authorities)
                     <label class="form-label">{{ $key }}</label>
                     
                     @foreach ($authorities as $authority)

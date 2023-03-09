@@ -53,6 +53,7 @@ class RegisteredUserController extends Controller
             'roles_id' => $userRole->id,
             'referral_code' => substr($request->email, 0, strpos($request->email, '@')),
             'referred_by' => $userReferrer,
+            'is_locked' => false,
             'username' => substr($request->email, 0, strpos($request->email, '@')),
 
         ]);

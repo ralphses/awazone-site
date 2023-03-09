@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Roles;
+use App\Models\utils\Utility;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -24,7 +25,7 @@ class RolesController extends Controller
      */
     public function create()
     {
-        return view('dashboard.users.roles.add');
+        return view('dashboard.users.roles.add', ['abilities' => Utility::USER_AUTHORITIES]);
     }
 
     /**
