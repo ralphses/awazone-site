@@ -10,13 +10,15 @@ class All extends Component
 {
     public $kycs;
     public $pages;
+    public $types;
     /**
      * Create a new component instance.
      */
-    public function __construct($kycs, $pages)
+    public function __construct($kycs, $pages, $types)
     {
         $this->kycs = $kycs;
         $this->pages = $pages;
+        $this->types = $types;
     }
 
     /**

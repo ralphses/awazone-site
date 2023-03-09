@@ -10,13 +10,15 @@ class ShowRole extends Component
 {
     public $role;
     public $userauthorities;
+    public $allauthorities;
     /**
      * Create a new component instance.
      */
-    public function __construct($role, $userauthorities)
+    public function __construct($role, $userauthorities, $allauthorities)
     {
         $this->role = $role;
         $this->userauthorities = $userauthorities;
+        $this->allauthorities = $allauthorities;
 
         // in_array()
     }

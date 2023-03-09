@@ -9,12 +9,14 @@ use Illuminate\View\Component;
 class Show extends Component
 {
     public $user;
+    public $currencies;
     /**
      * Create a new component instance.
      */
-    public function __construct($user)
+    public function __construct($user, $currencies)
     {
         $this->user = $user;
+        $this->currencies = $currencies;
     }
 
     /**

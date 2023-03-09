@@ -19,7 +19,7 @@ class UserKycController extends Controller
 
         $pages = $kycs->getUrlRange(1, $kycs->lastPage());
 
-        return view('dashboard.users.kyc.all', ['kycs' => $kycs, 'pages' => $pages]);
+        return view('dashboard.users.kyc.all', ['kycs' => $kycs, 'pages' => $pages, 'types' => Utility::KYC_DOC_TYPE]);
     }
 
     /**

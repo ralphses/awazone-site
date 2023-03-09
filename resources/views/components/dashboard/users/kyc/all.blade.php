@@ -35,7 +35,7 @@
             <td class="fw-semibold fs-sm">
               <a href="be_pages_generic_profile.html">{{ $kyc->user->name }}</a>
             </td>
-            <td class="d-none d-md-table-cell fs-sm">{{ \App\Models\Utils\Utility::KYC_DOC_TYPE[$kyc->type] }}</td>
+            <td class="d-none d-md-table-cell fs-sm">{{ $types[$kyc->type] }}</td>
             <td class="d-none d-md-table-cell fs-sm">{{ $kyc->verified_on ?? "Not Verified" }}</td>
            
             <td class="text-center">

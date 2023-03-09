@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\Roles;
 use App\Models\User;
+use App\Models\utils\Utility;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -101,7 +102,7 @@ class UserAccountController extends Controller
     public function edit(Request $request) {
 
         try {
-            return view('dashboard.users.show', ['user' => User::find($request->id)]);
+            return view('dashboard.users.show', ['user' => User::find($request->id), 'currencies' => Utility::CURRENCIES]);
 
         } catch (\Throwable $th) {
             return back();

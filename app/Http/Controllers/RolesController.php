@@ -55,7 +55,7 @@ class RolesController extends Controller
     {
         try {
             $role = Roles::find($request->id);
-            return view('dashboard.users.roles.show-role', ['role' => $role, 'userauthorities' => explode('|', $role->authorities)]);
+            return view('dashboard.users.roles.show-role', ['role' => $role, 'userauthorities' => explode('|', $role->authorities), 'allauthorities' => Utility::USER_AUTHORITIES]);
         } catch (\Throwable $th) {
             return back();
         }
