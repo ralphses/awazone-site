@@ -5,6 +5,8 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -64,5 +66,32 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(UserKyc::class);
     }
 
+    public function monnifyAccount(): HasOne
+    {
+        return $this->hasOne(MonnifyAccount::class);
+    }
+
+    public function aibopayAccounts(): HasMany
+    {
+        return $this->hasMany(AibopayAccount::class);
+    }
+
+    public function cards(): HasMany
+    {
+        return $this->hasMany(Card::class);
+    }
+
+    public function exchangeRates(): HasMany
+    {
+        return $this->hasMany(ExchangeRate::class, 'added_by');
+    }
+
+    public function currencies() {
+        return $this->hasMany(Currency::class, 'added_by');
+    }
+
+    public function currency() {
+        return $this->belongsTo(Currency::class);
+    }
 
 }

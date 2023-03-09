@@ -26,7 +26,7 @@ class ProfileUpdateRequest extends FormRequest
             'user_state' => ['required','string', 'max:50'],
             'user_country' => ['required','string', 'max:50'],
             'user_image' => ['required', Rule::imageFile()],
-            'user_currency' => ['required','string', Rule::in(array_keys(Utility::CURRENCIES))]
+            'user_currency' => ['required','string', Rule::exists('currencies', 'id')]
         ];
     }
 }

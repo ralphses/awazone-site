@@ -4,6 +4,20 @@ namespace App\Models\utils;
 
 class Utility {
 
+    public const CARD_TYPE = [
+        'VISA',
+        'MASTER CARD',
+        'OTHERS',
+        'VERVE'
+    ];
+
+    public const AIBOPAY_ACCOUNT_STATUS = [
+        'active' => 'ACTIVATED',
+        'frozen' => 'FROZEN',
+        'inactive' => 'INACTIVE',
+        'suspended' => 'SUSPENDED'
+    ];
+
     public const USER_AUTHORITIES = [
         'authority' => [
             'authority_view',
@@ -51,11 +65,7 @@ class Utility {
         ]
     ];
 
-    public const CURRENCIES = [
-        'ngn' => 'Nigerian Naira',
-        'usd' => 'United States Dollar',
-        'bp' => 'British Pound' 
-    ];
+
 
     public const KYC_DOC_TYPE = [
         'nin' => 'National Identity Card',

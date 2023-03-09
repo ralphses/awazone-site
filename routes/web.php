@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExchangeRateController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\UserAccountController;
 use App\Http\Controllers\UserKycController;
@@ -46,6 +48,36 @@ Route::prefix('/dashboard')->middleware(['auth', 'verified', 'account_open'])->g
     Route::get('/', [DashboardController::class, 'index'])
         ->middleware('user.unlocked')
         ->name('dashboard.home');
+    
+    Route::prefix('/exchange-rates')->group(function() {
+
+        Route::get('/', [ExchangeRateController::class, 'index'])
+            ->name('exchange.all');
+        
+        Route::get('/add', [ExchangeRateController::class, 'create'])
+            ->name('exchange.add');
+        
+        Route::post('/add', [ExchangeRateController::class, 'store'])
+            ->name('exchange.store');
+        
+        Route::delete('/remove', [ExchangeRateController::class, 'destroy'])
+            ->name('exchange.remove');
+    });
+
+    Route::prefix('/currencies')->group(function() {
+
+        Route::get('/', [CurrencyController::class, 'index'])
+            ->name('currency.all');
+        
+        Route::get('/add', [CurrencyController::class, 'create'])
+            ->name('currency.add');
+        
+        Route::post('/add', [CurrencyController::class, 'store'])
+            ->name('currency.store');
+        
+        Route::delete('/remove/{id}', [CurrencyController::class, 'destroy'])
+            ->name('currency.remove');
+    });
 
     Route::prefix('/users')->group(function() {
 

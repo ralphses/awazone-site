@@ -165,12 +165,16 @@
 
         <div class="form-floating mb-4">
             <select class="form-select" id="example-select-floating" name="user_currency" aria-label="Currency">
-              <option selected value="{{ Auth::user()->main_currency ?? null }}">{{ \App\Models\utils\Utility::CURRENCIES[Auth::user()->main_currency] ?? "Select an option" }}</option>
-             @foreach (\App\Models\utils\Utility::CURRENCIES as $key => $currency )
-                @if ($key != Auth::user()->main_currency)
-                    <option value="{{ $key }}">{{ $currency }}</option>
+              <option selected value="{{ Auth::user()->main_currency ?? null }}">{{ Auth::user()->currency->name ?? "Select an option" }}</option>
+             
+              @foreach ($currencies as $currency )
+                
+                @if ($currency->id != Auth::user()->main_currency)
+                    <option value="{{ $currency->id }}">{{ $currency->name }}</option>
                 @endif
+                
              @endforeach
+
             </select>
             <label for="example-select-floating">Main Currency</label>
             @if($errors->any('user_currency'))

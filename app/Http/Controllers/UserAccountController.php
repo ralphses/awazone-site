@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Currency;
 use App\Models\Roles;
 use App\Models\User;
 use App\Models\utils\Utility;
@@ -42,14 +43,14 @@ class UserAccountController extends Controller
 
     public function profile() {
 
-        return view('dashboard.users.profile', ['user' => Auth::user()]);
+        return view('dashboard.users.profile', ['user' => Auth::user(), 'currencies' => Currency::all()]);
     }
 
 
     public function update(ProfileUpdateRequest $request) {
 
         //Get AUthenticated User
-        $user = Auth::user();
+        $user = User::find(Auth::user()->id);
         
         //Update user
         $user->update([
@@ -89,7 +90,7 @@ class UserAccountController extends Controller
 
     public function assignRole(Request $request) {
 
-        if($request->method() == "POST") {
+        if($request->method() === "POST") {
 
             try {
                 User::find($request->id)->update(['roles_id' => $request->user_role]);
@@ -99,14 +100,14 @@ class UserAccountController extends Controller
                 return back();
             }
         }
-        
+
         return view('dashboard.users.assign-role', ['roles' => Roles::all(), 'user' => User::find($request->id)]);
     }
 
     public function edit(Request $request) {
 
         try {
-            return view('dashboard.users.show', ['user' => User::find($request->id), 'currencies' => Utility::CURRENCIES]);
+            return view('dashboard.users.show', ['user' => User::find($request->id), 'currencies' => Currency::all()]);
 
         } catch (\Throwable $th) {
             return back();

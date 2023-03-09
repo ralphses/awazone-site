@@ -1,22 +1,21 @@
 <?php
 
-namespace App\View\Components\Dashboard\Users;
+namespace App\View\Components\Dashboard\Currency;
 
-use App\Models\User;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Profile extends Component
+class All extends Component
 {
-    public User $user;
+    public $pages;
     public $currencies;
     /**
      * Create a new component instance.
      */
-    public function __construct(User $user, $currencies)
+    public function __construct($currencies, $pages)
     {
-        $this->user = $user;
+        $this->pages = $pages;
         $this->currencies = $currencies;
     }
 
@@ -25,6 +24,6 @@ class Profile extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.dashboard.users.profile');
+        return view('components.dashboard.currency.all');
     }
 }

@@ -170,16 +170,14 @@
               <li class="nav-main-item">
                 <a class="nav-main-link" href="{{ route('users.all') }}">
                   <i class="nav-main-link-icon si si-speedometer"></i>
-                  <span class="nav-main-link-name">Users</span>
+                  <span class="nav-main-link-name">User Management</span>
                 </a>
               </li>
-
-              
               
               <li class="nav-main-item">
                 <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                   <i class="nav-main-link-icon si si-puzzle"></i>
-                  <span class="nav-main-link-name">User KYCs</span>
+                  <span class="nav-main-link-name">KYC Management</span>
                 </a>
                 <ul class="nav-main-submenu">
                   <li class="nav-main-item">
@@ -199,7 +197,7 @@
               <li class="nav-main-item">
                 <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                   <i class="nav-main-link-icon si si-puzzle"></i>
-                  <span class="nav-main-link-name">Role Management</span>
+                  <span class="nav-main-link-name">Roles Management</span>
                 </a>
                 <ul class="nav-main-submenu">
                   <li class="nav-main-item">
@@ -217,7 +215,7 @@
               <li class="nav-main-item">
                 <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                   <i class="nav-main-link-icon si si-puzzle"></i>
-                  <span class="nav-main-link-name">My Services</span>
+                  <span class="nav-main-link-name">Module Management</span>
                 </a>
                 <ul class="nav-main-submenu">
                   <li class="nav-main-item">
@@ -233,6 +231,43 @@
                 </ul>
               </li>
 
+              <li class="nav-main-item">
+                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                  <i class="nav-main-link-icon si si-puzzle"></i>
+                  <span class="nav-main-link-name">Exchange Rates</span>
+                </a>
+                <ul class="nav-main-submenu">
+                  <li class="nav-main-item">
+                    <a class="nav-main-link" href="{{ route('exchange.all') }}">
+                      <span class="nav-main-link-name">View All</span>
+                    </a>
+                  </li>
+                  <li class="nav-main-item">
+                    <a class="nav-main-link" href="{{ route('exchange.add') }}">
+                      <span class="nav-main-link-name">Add New</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-main-item">
+                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                  <i class="nav-main-link-icon si si-puzzle"></i>
+                  <span class="nav-main-link-name">Currency Management</span>
+                </a>
+                <ul class="nav-main-submenu">
+                  <li class="nav-main-item">
+                    <a class="nav-main-link" href="{{ route('currency.all') }}">
+                      <span class="nav-main-link-name">View All</span>
+                    </a>
+                  </li>
+                  <li class="nav-main-item">
+                    <a class="nav-main-link" href="{{ route('currency.add') }}">
+                      <span class="nav-main-link-name">Add New</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              
               <li class="nav-main-item">
                 <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                   <i class="nav-main-link-icon si si-puzzle"></i>
