@@ -88,14 +88,18 @@ class UserAccountController extends Controller
     }
 
     public function assignRole(Request $request) {
+
         if($request->method() == "POST") {
+
             try {
                 User::find($request->id)->update(['roles_id' => $request->user_role]);
                 return redirect()->route('users.all');
+
             } catch (\Throwable $th) {
                 return back();
             }
         }
+        
         return view('dashboard.users.assign-role', ['roles' => Roles::all(), 'user' => User::find($request->id)]);
     }
 
