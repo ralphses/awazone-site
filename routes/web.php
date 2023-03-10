@@ -156,6 +156,14 @@ Route::prefix('/dashboard')->middleware(['auth', 'verified', 'account_open'])->g
         Route::get('/', [AibopayAccountController::class, 'index'])
             ->name('aibopay.all');
         
+        Route::view('/introduction', 'dashboard.aibopay.introduction')
+            ->name('aibopay.introduction');
+        
+        Route::prefix('/dashboard')->middleware('have_aibopay')->group(function() {
+
+            Route::get('/', [DashboardController::class, 'aibopay'])
+                ->name('aibopay.dashboard');
+        });
     });
 
 });

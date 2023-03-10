@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\AccountOpen;
+use App\Http\Middleware\HaveAibopay;
 use App\Http\Middleware\UserUnlocked;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -66,6 +67,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'user.unlocked' => UserUnlocked::class,
-        'account_open' => AccountOpen::class
+        'account_open' => AccountOpen::class,
+        'have_aibopay' => HaveAibopay::class
     ];
 }

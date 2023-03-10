@@ -219,7 +219,7 @@
                 </a>
                 <ul class="nav-main-submenu">
                   <li class="nav-main-item">
-                    <a class="nav-main-link" href="javascript:void(0)">
+                    <a class="nav-main-link" href="{{ route('aibopay.dashboard') }}">
                       <span class="nav-main-link-name">AIBOPAY</span>
                     </a>
                   </li>
