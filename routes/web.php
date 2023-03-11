@@ -4,6 +4,7 @@ use App\Http\Controllers\AibopayAccountController;
 use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExchangeRateController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\UserAccountController;
 use App\Http\Controllers\UserKycController;
@@ -159,11 +160,27 @@ Route::prefix('/dashboard')->middleware(['auth', 'verified', 'account_open'])->g
         Route::view('/introduction', 'dashboard.aibopay.introduction')
             ->name('aibopay.introduction');
         
-        Route::prefix('/dashboard')->middleware('have_aibopay')->group(function() {
+        Route::prefix('/dashboard')->group(function() {
 
-            Route::get('/', [DashboardController::class, 'aibopay'])
-                ->name('aibopay.dashboard');
+            Route::post('/start', [AibopayAccountController::class, 'initAibopay'])
+                ->name('aibopay.start');
+
+            Route::middleware('have_aibopay')->group(function() {
+
+                Route::get('/', [DashboardController::class, 'aibopay'])
+                    ->name('aibopay.dashboard');
+
+                Route::prefix('/add-money')->group(function() {
+
+                    Route::get('/transfer', [PaymentController::class, 'transfer'])
+                        ->name('add-money.transfer');
+                        
+                });
+                
+            });
+
         });
+
     });
 
 });

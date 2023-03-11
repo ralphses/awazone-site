@@ -41,7 +41,7 @@ class AdminInit extends Command
         if($userRole->count() < 1) {
 
             
-        $authorities = Utility::USER_ABILITIES;
+        $authorities = Utility::USER_AUTHORITIES;
 
         $allAuthorities = $this->createAdminAuthurities($authorities);
 

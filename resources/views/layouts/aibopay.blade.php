@@ -201,7 +201,7 @@
                                         <div class="row">
                                             <div class="col-lg-4">
                                                 <div>
-                                                    <a href="#" class="dropdown-item">Bank Transfer</a>
+                                                    <a href="{{ route('add-money.transfer') }}" class="dropdown-item">Bank Transfer</a>
                                                 </div>
                                             </div>
                                         </div>

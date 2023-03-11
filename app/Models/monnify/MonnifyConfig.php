@@ -14,7 +14,7 @@ class MonnifyConfig {
     public static function getAccessToken() : string {
 
         $response = Http::withHeaders(["Authorization" => self::base64Secrete()])
-            ->post(env("MONNIFY_BASE_URL") . MonnifyCredentials::LOGIN_URL);
+            ->post(env('MONNIFY_BASE_URL') . MonnifyCredentials::LOGIN_URL);
 
         return $response->json()['responseBody']['accessToken'];
     }

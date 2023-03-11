@@ -32,10 +32,6 @@
                         </p>
                     </div>
                 </div>
-                <form action="" method="POST">
-                    @csrf
-                    <button style="width: 60%; height: 60%; margin-left: 20%; margin-right: 20%; margin-bottom: 2%" type="submit" class="text-white float-right btn btn-primary">Check it out</button>
-                </form>
             </div>
         </div>
         <!-- end col -->

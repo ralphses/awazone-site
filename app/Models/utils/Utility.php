@@ -65,6 +65,11 @@ class Utility {
         ]
     ];
 
+    public const AIBOPAY_ACCOUNT_TYPE = [
+        'savings' => 'Savings',
+        'current' => 'Current',
+    ];
+
 
 
     public const KYC_DOC_TYPE = [
