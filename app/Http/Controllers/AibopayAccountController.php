@@ -59,7 +59,7 @@ class AibopayAccountController extends Controller
             //Create new monnify account resource
             MonnifyAccount::create(
                 [
-                    'customerName' => $createAccountResponse->json('responseBody')['customerName'],
+                    'customerName' => $createAccountResponse->json('responseBody')['accountName'],
                     'accountNumber' => $createAccountResponse->json('responseBody')['accounts'][0]['accountNumber'],
                     'user_id' => Auth::user()->id,
                     'currency' => MonnifyCredentials::NGN_CURRENCY_CODE,

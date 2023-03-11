@@ -32,6 +32,48 @@
                         </p>
                     </div>
                 </div>
+                <div class="col-sm-6 col-md-4 col-xl-3">
+
+                    <button type="button" class="btn btn-primary waves-effect waves-light"
+                            data-bs-toggle="modal" data-bs-target=".bs-example-modal-center" style="width: 100%; height: 60%; margin-left: 20%; margin-right: 20%; margin-bottom: 4%">
+                            CLICK HERE TO GET STARTED
+                    </button>
+
+                    <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog"
+                        aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title mt-0">BVN Input</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close">
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="col-lg-12">
+                                        <div class="card card-body text-center">
+                                            <h4 class="card-title">Bank Verification Number</h4>
+                                            
+                                            <form action="{{ route('aibopay.start') }}" method="POST">
+                                                @csrf
+
+                                                <div class="mb-4">
+                                                    <input type="text" name="bvn" id="" class="form-control form-input" placeholder="Enter BVN here">
+                                                </div>
+        
+                                                <button type="submit" class="btn btn-primary waves-effect waves-light">Get Started</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+                    <!-- /.modal -->
+                </div>
             </div>
         </div>
         <!-- end col -->
