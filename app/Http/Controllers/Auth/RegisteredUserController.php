@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Currency;
 use App\Models\Roles;
 use App\Models\User;
 use App\Models\UserAddress;
@@ -45,6 +46,8 @@ class RegisteredUserController extends Controller
         //Assign a role for user
         $userRole = Roles::where('name', 'user')->get()->first() ?? Roles::create(['name' => 'user', 'token' => uniqid()]);
 
+        $mainCurrency = Currency::where('code', 'NGN')->get()->first() ?? Currency::create(['name' => 'Nigerian Naira', 'code' => "NGN", 'added_by' => 'Admin']);
+
         //Create this user
         $user = User::create([
             'name' => $request->name,
@@ -55,6 +58,7 @@ class RegisteredUserController extends Controller
             'referred_by' => $userReferrer,
             'is_locked' => false,
             'username' => substr($request->email, 0, strpos($request->email, '@')),
+            'main_currency' => $mainCurrency->id
 
         ]);
 

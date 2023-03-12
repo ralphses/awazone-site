@@ -80,4 +80,19 @@ class Utility {
         'others' => 'Others'
 
     ];
+
+    public const TRANSACTION_STATUS = [
+        'COMPLETED' => 0,
+        'DECLINED' => -2,
+        'PAID' => 1,
+        'OVERPAID' => 2,
+        'PARTIALLY_PAID' => 3,
+        'PENDING' => -1,
+        'ABANDONED' => -2,
+        'CANCELLED' => -3,
+        'FAILED' => -4,
+        'REVERSED' => -5,
+        'EXPIRED' => -6,
+    ];
+
 }

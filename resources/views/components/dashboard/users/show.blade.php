@@ -115,7 +115,7 @@
 
         <div class="form-floating mb-4">
             @if(!$user->is_locked AND $user->main_currency)
-                <input type="text" class="form-control" value="{{ $currencies[$user->main_currency]  }}" readonly="" disabled>
+                <input type="text" class="form-control" value="{{ $currency->name  }}" readonly="" disabled>
             @else
                 <input type="text" class="form-control" value="" readonly="" disabled>
             @endif

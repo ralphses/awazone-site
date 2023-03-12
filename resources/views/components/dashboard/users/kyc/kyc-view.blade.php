@@ -44,7 +44,7 @@
     <div class="block-content block-content-full">
       <h3 class="block-title">SUBMITTED KYC DOCUMENT</h3>
        <div style="width: 75%; height: 75%;" class="d-flex justify-center">
-        <img style="width: 100%; height: 100%;" src="{{ Storage::url($kyc->path) }}" alt="">
+        <img style="width: 100%; height: 100%;" src="{{ asset(str_replace('public', 'storage', $kyc->path)) }}" alt="">
     </div>
     </div>
   </div>

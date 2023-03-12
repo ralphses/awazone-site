@@ -30,7 +30,7 @@
   
           <tr>
             <td class="text-center">
-              <img class="img-avatar img-avatar48" src="{{ Storage::url($kyc->image) }}" alt="">
+              <img class="img-avatar img-avatar48" src="{{ asset(str_replace('public', 'storage', $kyc->path)) }}" alt="">
             </td>
             <td class="fw-semibold fs-sm">
               <a href="be_pages_generic_profile.html">{{ $kyc->user->name }}</a>

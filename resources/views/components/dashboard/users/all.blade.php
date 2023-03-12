@@ -36,7 +36,7 @@
 
         <tr>
           <td class="text-center">
-            <img class="img-avatar img-avatar48" src="{{ Storage::url($user->image_path) }}" alt="">
+            <img class="img-avatar img-avatar48" src="{{ asset(str_replace('public', 'storage', $user->image_path)) }}" alt="">
           </td>
           <td class="fw-semibold fs-sm">
             {{ $user->name }}

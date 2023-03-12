@@ -11,13 +11,15 @@ class Profile extends Component
 {
     public User $user;
     public $currencies;
+    public $currency;
     /**
      * Create a new component instance.
      */
-    public function __construct(User $user, $currencies)
+    public function __construct(User $user, $currencies, $currency)
     {
         $this->user = $user;
         $this->currencies = $currencies;
+        $this->currency = $currency;
     }
 
     /**

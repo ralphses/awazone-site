@@ -43,10 +43,14 @@ class UserKycController extends Controller
             'kyc_image' => ['required', Rule::imageFile()]
         ]);
 
+        $image = $request->file('kyc_image');
+        $imageName = $image->getClientOriginalName();
+        
+
         UserKyc::create([
             'type' => $request->get('kyc_type'),
-            'path' => $request->file('kyc_image')->storePublicly('public/user/kyc'),
-            'user_id' => Auth::user()->id
+            'path' => $image->storeAs('public/users/kyc', $imageName),
+            'user_id' => $request->user()->id
         ]);
 
         return redirect()->route('dashboard.home');

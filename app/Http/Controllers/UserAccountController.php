@@ -6,7 +6,6 @@ use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\Currency;
 use App\Models\Roles;
 use App\Models\User;
-use App\Models\utils\Utility;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -41,9 +40,8 @@ class UserAccountController extends Controller
 
     }
 
-    public function profile() {
-
-        return view('dashboard.users.profile', ['user' => Auth::user(), 'currencies' => Currency::all()]);
+    public function profile(Request $request) {
+        return view('dashboard.users.profile', ['user' => $request->user(), 'currencies' => Currency::all(), 'currency' => Currency::find($request->user()->main_currency)]);
     }
 
 
@@ -51,12 +49,15 @@ class UserAccountController extends Controller
 
         //Get AUthenticated User
         $user = User::find(Auth::user()->id);
+
+        $image = $request->file('user_image');
+        $imageName = $image->getClientOriginalName();
         
         //Update user
         $user->update([
             'date_of_birth' => $request->get('user_date_of_birth'),
             'main_currency' => $request->get('user_currency'),
-            'image_path' => $request->user_image->storePublicly('public/user/images')
+            'image_path' => $image->storeAs('public/users/images', $imageName)
         ]);
 
         $address = $user->address;
@@ -107,7 +108,8 @@ class UserAccountController extends Controller
     public function edit(Request $request) {
 
         try {
-            return view('dashboard.users.show', ['user' => User::find($request->id), 'currencies' => Currency::all()]);
+            $user = User::find($request->id);
+            return view('dashboard.users.show', ['user' => $user, 'currencies' => Currency::all(), 'currency' => Currency::find($user->main_currency)]);
 
         } catch (\Throwable $th) {
             return back();

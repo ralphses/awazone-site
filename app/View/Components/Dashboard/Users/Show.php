@@ -10,13 +10,15 @@ class Show extends Component
 {
     public $user;
     public $currencies;
+    public $currency;
     /**
      * Create a new component instance.
      */
-    public function __construct($user, $currencies)
+    public function __construct($user, $currencies, $currency)
     {
         $this->user = $user;
         $this->currencies = $currencies;
+        $this->currency = $currency;
     }
 
     /**
