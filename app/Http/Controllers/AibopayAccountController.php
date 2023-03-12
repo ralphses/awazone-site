@@ -19,6 +19,7 @@ class AibopayAccountController extends Controller
      */
     public function initAibopay(Request $request) {
 
+        //Check if this user have been initiated before 
         if($request->user()->aibopayAccounts->count() > 0) {
             return redirect()->route('aibopay.dashboard');
         }

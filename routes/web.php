@@ -174,7 +174,10 @@ Route::prefix('/dashboard')->middleware(['auth', 'verified', 'account_open'])->g
 
                     Route::get('/transfer', [PaymentController::class, 'transfer'])
                         ->name('add-money.transfer');
-                        
+                    
+                    Route::get('/ussd', [PaymentController::class, 'ussd'])
+                        ->name('add-money.ussd');
+
                 });
                 
             });

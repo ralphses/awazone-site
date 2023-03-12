@@ -2,6 +2,8 @@
 
 namespace App\Models\monnify;
 
+use Illuminate\Support\Facades\Storage;
+
 class MonnifyCredentials {
 
     public const LOGIN_URL = "/api/v1/auth/login";
@@ -23,5 +25,8 @@ class MonnifyCredentials {
     public const NGN_CURRENCY_CODE = "NGN";
     public const WEMA_BANK_CODE = "035";
 
+    public static function authorizationHeader() {
+        return ['Authorization' => MonnifyCredentials::BEARER_AUTHORIZATION_PREFIX . Storage::disk('local')->get('token.txt')];
+    }
 
 }

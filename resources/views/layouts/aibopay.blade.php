@@ -208,7 +208,7 @@
                                         <div class="row">
                                             <div class="col-lg-4">
                                                 <div>
-                                                    <a href="#" class="dropdown-item">USSD</a>
+                                                    <a href="{{ route('add-money.ussd') }}" class="dropdown-item">USSD</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -397,6 +397,7 @@
     <script src="{{ asset('aibopay/js/pages/dashboard.init.js') }}"></script>
 
     <script src="{{ asset('aibopay/js/app.js') }}"></script>
+
 
 </body>
 
