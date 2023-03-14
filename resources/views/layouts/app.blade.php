@@ -168,6 +168,13 @@
               </li>
               <li class="nav-main-heading">Heading</li>
               <li class="nav-main-item">
+                <a class="nav-main-link" href="">
+                  <i class="nav-main-link-icon si si-speedometer"></i>
+                  <span class="nav-main-link-name">My Inbox</span>
+                </a>
+              </li>
+
+              <li class="nav-main-item">
                 <a class="nav-main-link" href="{{ route('users.all') }}">
                   <i class="nav-main-link-icon si si-speedometer"></i>
                   <span class="nav-main-link-name">User Management</span>
@@ -215,9 +222,14 @@
               <li class="nav-main-item">
                 <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                   <i class="nav-main-link-icon si si-puzzle"></i>
-                  <span class="nav-main-link-name">Module Management</span>
+                  <span class="nav-main-link-name">Project Management</span>
                 </a>
                 <ul class="nav-main-submenu">
+                  <li class="nav-main-item">
+                    <a class="nav-main-link" href="">
+                      <span class="nav-main-link-name">New Project</span>
+                    </a>
+                  </li>
                   <li class="nav-main-item">
                     <a class="nav-main-link" href="{{ route('aibopay.dashboard') }}">
                       <span class="nav-main-link-name">AIBOPAY</span>
@@ -262,6 +274,58 @@
                   </li>
                   <li class="nav-main-item">
                     <a class="nav-main-link" href="{{ route('currency.add') }}">
+                      <span class="nav-main-link-name">Add New</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+               <li class="nav-main-item">
+                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                  <i class="nav-main-link-icon si si-puzzle"></i>
+                  <span class="nav-main-link-name">Newsletter Management</span>
+                </a>
+                <ul class="nav-main-submenu">
+                  <li class="nav-main-item">
+                    <a class="nav-main-link" href="javascript:void(0)">
+                      <span class="nav-main-link-name">Email Suscribers</span>
+                    </a>
+                  </li>
+                  <li class="nav-main-item">
+                    <a class="nav-main-link" href="javascript:void(0)">
+                      <span class="nav-main-link-name">SMS Susbscribers</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="nav-main-item">
+                <a class="nav-main-link" href="">
+                  <i class="nav-main-link-icon si si-speedometer"></i>
+                  <span class="nav-main-link-name">Social Media Settings</span>
+                </a>
+              </li>
+
+               <li class="nav-main-item">
+                <a class="nav-main-link" href="">
+                  <i class="nav-main-link-icon si si-speedometer"></i>
+                  <span class="nav-main-link-name">Ask for support</span>
+                </a>
+              </li>
+
+               <li class="nav-main-item">
+                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                  <i class="nav-main-link-icon si si-puzzle"></i>
+                  <span class="nav-main-link-name">Promotion Tools</span>
+                </a>
+                <ul class="nav-main-submenu">
+                  <li class="nav-main-item">
+                    <a class="nav-main-link" href="javascript:void(0)">
+                      <span class="nav-main-link-name">View All</span>
+                    </a>
+                  </li>
+                  <li class="nav-main-item">
+                    <a class="nav-main-link" href="javascript:void(0)">
                       <span class="nav-main-link-name">Add New</span>
                     </a>
                   </li>

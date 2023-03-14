@@ -50,6 +50,7 @@ class UserAccountController extends Controller
         //Get AUthenticated User
         $user = User::find(Auth::user()->id);
 
+        //Get user uploaded images
         $image = $request->file('user_image');
         $imageName = $image->getClientOriginalName();
         

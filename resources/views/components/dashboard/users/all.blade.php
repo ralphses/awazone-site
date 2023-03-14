@@ -63,23 +63,27 @@
                 </button>
               </a>
 
+              @if ($user->id != Auth::user()->id)
               <a href="{{ route('users.add.role', ['id' => $user->id]) }}">
                 <button type="button" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Edit" data-bs-original-title="Edit">
                   <i class="fa fa-fw fa-user-alt"></i>
                 </button>
               </a>
+              @endif
 
-             <form action="{{ route('user.status', ['id' => $user->id]) }}" method="POST">
-              @csrf
-              @method('PATCH')
-              <button type="submit" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Delete" data-bs-original-title="Delete">
-                @if ($user->is_locked)
-                  <i class="fa fa-fw fa-check"></i>
-                @else
-                  <i class="fa fa-fw fa-times"></i>
-                @endif
-              </button>
-            </form>
+           @if ($user->id != Auth::user()->id)
+           <form action="{{ route('user.status', ['id' => $user->id]) }}" method="POST">
+            @csrf
+            @method('PATCH')
+            <button type="submit" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" aria-label="Delete" data-bs-original-title="Delete">
+              @if ($user->is_locked)
+                <i class="fa fa-fw fa-check"></i>
+              @else
+                <i class="fa fa-fw fa-times"></i>
+              @endif
+            </button>
+          </form>
+           @endif
             </div>
           </td>
         </tr>
