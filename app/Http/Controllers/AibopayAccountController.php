@@ -8,12 +8,10 @@ use App\Models\MonnifyAccount;
 use App\Models\utils\RequestSender;
 use App\Models\utils\Utility;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class AibopayAccountController extends Controller
 {
-
      /**
      * Create an aibopay module for this user.
      */
@@ -39,13 +37,13 @@ class AibopayAccountController extends Controller
             env('MONNIFY_BASE_URL') . MonnifyCredentials::CREATE_VIRTUAL_ACCOUNT,
             
             [
-                "accountReference" => Auth::user()->username,
-                "accountName" => Auth::user()->name,
+                "accountReference" => $request->user()->username,
+                "accountName" => $request->user()->name,
                 "currencyCode" => MonnifyCredentials::NGN_CURRENCY_CODE,
                 "contractCode" => MonnifyCredentials::CONTRACT_CODE,
-                "customerEmail" => Auth::user()->email,
+                "customerEmail" => $request->user()->email,
                 "bvn" => $request->get('bvn'),
-                "customerName" => Auth::user()->name,
+                "customerName" => $request->user()->name,
                 "getAllAvailableBanks" => false,
                 "preferredBanks" => [MonnifyCredentials::WEMA_BANK_CODE]
             ],
@@ -62,7 +60,7 @@ class AibopayAccountController extends Controller
                 [
                     'customerName' => $createAccountResponse->json('responseBody')['accountName'],
                     'accountNumber' => $createAccountResponse->json('responseBody')['accounts'][0]['accountNumber'],
-                    'user_id' => Auth::user()->id,
+                    'user_id' => $request->user()->id,
                     'currency' => MonnifyCredentials::NGN_CURRENCY_CODE,
                     'bank' => $createAccountResponse->json('responseBody')['accounts'][0]['bankName'],
                     'reference' => $createAccountResponse->json('responseBody')['accountReference'],
@@ -73,8 +71,8 @@ class AibopayAccountController extends Controller
             //Create new Aibopay Account for user
             AibopayAccount::create(
                 [
-                    'user_id' => Auth::user()->id,
-                    'accountName' => Auth::user()->name,
+                    'user_id' => $request->user()->id,
+                    'accountName' => $request->user()->name,
                     'currency' => MonnifyCredentials::NGN_CURRENCY_CODE,
                     'accountNumber' => $this->generateAccountNumber($request),
                     'accountType' => Utility::AIBOPAY_ACCOUNT_TYPE['savings'],
@@ -151,7 +149,7 @@ class AibopayAccountController extends Controller
     private function generateAccountNumber(Request $request): string
     {
         $userPhoneContact = $request->user()->address->phone;
-        return substr($userPhoneContact, ( strlen($userPhoneContact) - 10), strlen($userPhoneContact));
+        return substr( $userPhoneContact, ( strlen($userPhoneContact) - 10 ), strlen( $userPhoneContact ) );
         
     }
 }

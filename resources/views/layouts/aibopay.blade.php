@@ -183,16 +183,36 @@
 
                         <div class="collapse navbar-collapse" id="topnav-menu-content">
                             <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('aibopay.dashboard') }}">
-                                        <i class="dripicons-device-desktop me-2"></i>Dashboard
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-user-Interface"
+                                        role="button">
+                                        AiboPay
+                                        <div class="arrow-down"></div>
                                     </a>
+
+                                    <div class="dropdown-menu mega-dropdown-menu dropdown-mega-menu-l dropdown-menu-start"
+                                        aria-labelledby="topnav-user-Interface">
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div>
+                                                    <a href="#" class="dropdown-item">Aibopay Accounts</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div>
+                                                    <a href="#" class="dropdown-item">Cards</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </li>
 
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-user-Interface"
                                         role="button">
-                                        <i class="dripicons-suitcase me-2"></i>Add Money
+                                        Add Funds
                                         <div class="arrow-down"></div>
                                     </a>
 
@@ -226,13 +246,21 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div>
+                                                    <a href="#" class="dropdown-item">Crypto</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
                                 </li>
 
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-user-Interface"
                                         role="button">
-                                        <i class="dripicons-suitcase me-2"></i>Pay
+                                        Send Money
                                         <div class="arrow-down"></div>
                                     </a>
 
@@ -255,14 +283,21 @@
                                         <div class="row">
                                             <div class="col-lg-4">
                                                 <div>
-                                                    <a href="#" class="dropdown-item">Buy Airtime</a>
+                                                    <a href="#" class="dropdown-item">Withdraw Funds</a>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-4">
                                                 <div>
-                                                    <a href="#" class="dropdown-item">Pay Bills</a>
+                                                    <a href="#" class="dropdown-item">Crypto</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div>
+                                                    <a href="#" class="dropdown-item">Fiat</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -272,7 +307,7 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-user-Interface"
                                         role="button">
-                                        <i class="dripicons-suitcase me-2"></i>Aibopay Accounts
+                                        Pay Bills
                                         <div class="arrow-down"></div>
                                     </a>
 
@@ -281,44 +316,71 @@
                                         <div class="row">
                                             <div class="col-lg-4">
                                                 <div>
-                                                    <a href="#" class="dropdown-item">View All</a>
+                                                    <a href="#" class="dropdown-item">AIBO</a>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-4">
                                                 <div>
-                                                    <a href="#" class="dropdown-item">Add</a>
+                                                    <a href="#" class="dropdown-item">Data</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div>
+                                                    <a href="#" class="dropdown-item">Airtime</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div>
+                                                    <a href="#" class="dropdown-item">Affiliate</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div>
+                                                    <a href="#" class="dropdown-item">Utility</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div>
+                                                    <a href="#" class="dropdown-item">Others</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
 
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-user-Interface"
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" id="topnav-user-Interface"
                                         role="button">
-                                        <i class="dripicons-suitcase me-2"></i>Cards
-                                        <div class="arrow-down"></div>
+                                        Escrow
                                     </a>
-
-                                    <div class="dropdown-menu mega-dropdown-menu dropdown-mega-menu-l dropdown-menu-start"
-                                        aria-labelledby="topnav-user-Interface">
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div>
-                                                    <a href="#" class="dropdown-item">View All</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div>
-                                                    <a href="#" class="dropdown-item">Add</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" id="topnav-user-Interface"
+                                        role="button">
+                                        Invest
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" id="topnav-user-Interface"
+                                        role="button">
+                                        Save
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" id="topnav-user-Interface"
+                                        role="button">
+                                        Invoice
+                                    </a>
                                 </li>
                             </ul>
                         </div>

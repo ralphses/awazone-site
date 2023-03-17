@@ -52,13 +52,12 @@ class UserAccountController extends Controller
 
         //Get user uploaded images
         $image = $request->file('user_image');
-        $imageName = $image->getClientOriginalName();
         
         //Update user
         $user->update([
             'date_of_birth' => $request->get('user_date_of_birth'),
             'main_currency' => $request->get('user_currency'),
-            'image_path' => $image->storeAs('public/users/images', $imageName)
+            'image_path' => $image->store('public/users/images'),
         ]);
 
         $address = $user->address;

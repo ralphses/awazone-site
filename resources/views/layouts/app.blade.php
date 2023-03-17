@@ -20,6 +20,9 @@
     <!-- Stylesheets -->
     <!-- OneUI framework -->
     <link rel="stylesheet" id="css-main" href="{{ asset('app/css/oneui.min.css') }}">
+    <link rel="stylesheet" id="css-main" href="{{ asset('app/js/plugins/slick-carousel/slick.css') }}">
+    <link rel="stylesheet" id="css-main" href="{{ asset('app/js/plugins/slick-carousel/slick-theme.css') }}">
+    <link rel="stylesheet" id="css-main" href="{{ asset('app/js/plugins/sweetalert2/sweetalert2.min.css') }}">
 
     <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
     <!-- <link rel="stylesheet" id="css-theme" href="app/css/themes/amethyst.min.css"> -->
@@ -168,9 +171,197 @@
               </li>
               <li class="nav-main-heading">Heading</li>
               <li class="nav-main-item">
+                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                  <i class="nav-main-link-icon si si-puzzle"></i>
+                  <span class="nav-main-link-name">Manage Funds</span>
+                </a>
+                <ul class="nav-main-submenu">
+                  <li class="nav-main-item">
+                    <a class="nav-main-link" href="javascript:void(0)">
+                      <span class="nav-main-link-name">Deposit</span>
+                    </a>
+                  </li>
+                  <li class="nav-main-item">
+                    <a class="nav-main-link" href="javascript:void(0)">
+                      <span class="nav-main-link-name">Send</span>
+                    </a>
+                  </li>
+                  <li class="nav-main-item">
+                    <a class="nav-main-link" href="javascript:void(0)">
+                      <span class="nav-main-link-name">Withdraw</span>
+                    </a>
+                  </li>
+                  <li class="nav-main-item">
+                    <a class="nav-main-link" href="javascript:void(0)">
+                      <span class="nav-main-link-name">Pay Bills</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="nav-main-item">
+                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                  <i class="nav-main-link-icon si si-puzzle"></i>
+                  <span class="nav-main-link-name">Discover</span>
+                </a>
+                <ul class="nav-main-submenu">
+                  
+                  <li class="nav-main-item">
+                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                      <span class="nav-main-link-name">AIBO</span>
+                    </a>
+                    <ul class="nav-main-submenu">
+                      <li class="nav-main-item">
+                        <a class="nav-main-link" href="javascript:void(0)">
+                          <span class="nav-main-link-name">Earn</span>
+                        </a>
+                      </li>
+                      <li class="nav-main-item">
+                        <a class="nav-main-link" href="{{ route('aibopay.dashboard') }}">
+                          <span class="nav-main-link-name">Pay</span>
+                        </a>
+                      </li>
+                      <li class="nav-main-item">
+                        <a class="nav-main-link" href="javascript:void(0)">
+                          <span class="nav-main-link-name">Nobles</span>
+                        </a>
+                      </li>
+                      <li class="nav-main-item">
+                        <a class="nav-main-link" href="javascript:void(0)">
+                          <span class="nav-main-link-name">Swap or Trade</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="nav-main-item">
+                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                  <i class="nav-main-link-icon si si-puzzle"></i>
+                  <span class="nav-main-link-name">Earning</span>
+                </a>
+                <ul class="nav-main-submenu">
+                  <li class="nav-main-item">
+                    <a class="nav-main-link" href="javascript:void(0)">
+                      <span class="nav-main-link-name">Set Payment Option</span>
+                    </a>
+                  </li>
+                  <li class="nav-main-item">
+                    <a class="nav-main-link" href="javascript:void(0)">
+                      <span class="nav-main-link-name">Earning History</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="nav-main-item">
+                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                  <i class="nav-main-link-icon si si-puzzle"></i>
+                  <span class="nav-main-link-name">Manage Team</span>
+                </a>
+                <ul class="nav-main-submenu">
+                  <li class="nav-main-item">
+                    <a class="nav-main-link" href="javascript:void(0)">
+                      <span class="nav-main-link-name">Direct Team</span>
+                    </a>
+                  </li>
+                  <li class="nav-main-item">
+                    <a class="nav-main-link" href="javascript:void(0)">
+                      <span class="nav-main-link-name">Business Team</span>
+                    </a>
+                  </li>
+                  <li class="nav-main-item">
+                    <a class="nav-main-link" href="javascript:void(0)">
+                      <span class="nav-main-link-name">Global Team</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="nav-main-item">
+                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                  <i class="nav-main-link-icon si si-puzzle"></i>
+                  <span class="nav-main-link-name">Resources</span>
+                </a>
+                <ul class="nav-main-submenu">
+                  <li class="nav-main-item">
+                    <a class="nav-main-link" href="javascript:void(0)">
+                      <span class="nav-main-link-name">Promotional Materials</span>
+                    </a>
+                  </li>
+                  <li class="nav-main-item">
+                    <a class="nav-main-link" href="javascript:void(0)">
+                      <span class="nav-main-link-name">Others</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              
+              <li class="nav-main-item">
+                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                  <i class="nav-main-link-icon si si-puzzle"></i>
+                  <span class="nav-main-link-name">Get Support</span>
+                </a>
+                <ul class="nav-main-submenu">
+                  <li class="nav-main-item">
+                    <a class="nav-main-link" href="javascript:void(0)">
+                      <span class="nav-main-link-name">Agencies</span>
+                    </a>
+                  </li>
+                  <li class="nav-main-item">
+                    <a class="nav-main-link" href="{{ route('support.message.create') }}">
+                      <span class="nav-main-link-name">Office</span>
+                    </a>
+                  </li>
+                  <li class="nav-main-item">
+                    <a class="nav-main-link" href="{{ route('support.ticket.all') }}">
+                      <span class="nav-main-link-name">Support Requests</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="nav-main-item">
+                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                  <i class="nav-main-link-icon si si-puzzle"></i>
+                  <span class="nav-main-link-name">Connect</span>
+                </a>
+                <ul class="nav-main-submenu">
+                  <li class="nav-main-item">
+                    <a class="nav-main-link" href="javascript:void(0)">
+                      <span class="nav-main-link-name">Social Links</span>
+                    </a>
+                  </li>
+                  <li class="nav-main-item">
+                    <a class="nav-main-link" href="javascript:void(0)">
+                      <span class="nav-main-link-name">Others</span>
+                    </a>
+                  </li>
+                  <li class="nav-main-item">
+                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                      <span class="nav-main-link-name">Newsletters</span>
+                    </a>
+                    <ul class="nav-main-submenu">
+                      <li class="nav-main-item">
+                        <a class="nav-main-link" href="javascript:void(0)">
+                          <span class="nav-main-link-name">Email Suscribers</span>
+                        </a>
+                      </li>
+                      <li class="nav-main-item">
+                        <a class="nav-main-link" href="javascript:void(0)">
+                          <span class="nav-main-link-name">SMS Susbscribers</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="nav-main-item">
                 <a class="nav-main-link" href="">
                   <i class="nav-main-link-icon si si-speedometer"></i>
-                  <span class="nav-main-link-name">My Inbox</span>
+                  <span class="nav-main-link-name">Testimonials</span>
                 </a>
               </li>
 
@@ -199,7 +390,6 @@
                   </li>
                 </ul>
               </li>
-
                 
               <li class="nav-main-item">
                 <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
@@ -219,34 +409,11 @@
                   </li>
                 </ul>
               </li>
-              <li class="nav-main-item">
-                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
-                  <i class="nav-main-link-icon si si-puzzle"></i>
-                  <span class="nav-main-link-name">Project Management</span>
-                </a>
-                <ul class="nav-main-submenu">
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="">
-                      <span class="nav-main-link-name">New Project</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="{{ route('aibopay.dashboard') }}">
-                      <span class="nav-main-link-name">AIBOPAY</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="javascript:void(0)">
-                      <span class="nav-main-link-name">AIBOEARN</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
 
               <li class="nav-main-item">
                 <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                   <i class="nav-main-link-icon si si-puzzle"></i>
-                  <span class="nav-main-link-name">Exchange Rates</span>
+                  <span class="nav-main-link-name">Currency Rates</span>
                 </a>
                 <ul class="nav-main-submenu">
                   <li class="nav-main-item">
@@ -280,58 +447,6 @@
                 </ul>
               </li>
 
-               <li class="nav-main-item">
-                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
-                  <i class="nav-main-link-icon si si-puzzle"></i>
-                  <span class="nav-main-link-name">Newsletter Management</span>
-                </a>
-                <ul class="nav-main-submenu">
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="javascript:void(0)">
-                      <span class="nav-main-link-name">Email Suscribers</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="javascript:void(0)">
-                      <span class="nav-main-link-name">SMS Susbscribers</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-
-              <li class="nav-main-item">
-                <a class="nav-main-link" href="">
-                  <i class="nav-main-link-icon si si-speedometer"></i>
-                  <span class="nav-main-link-name">Social Media Settings</span>
-                </a>
-              </li>
-
-               <li class="nav-main-item">
-                <a class="nav-main-link" href="">
-                  <i class="nav-main-link-icon si si-speedometer"></i>
-                  <span class="nav-main-link-name">Ask for support</span>
-                </a>
-              </li>
-
-               <li class="nav-main-item">
-                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
-                  <i class="nav-main-link-icon si si-puzzle"></i>
-                  <span class="nav-main-link-name">Promotion Tools</span>
-                </a>
-                <ul class="nav-main-submenu">
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="javascript:void(0)">
-                      <span class="nav-main-link-name">View All</span>
-                    </a>
-                  </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="javascript:void(0)">
-                      <span class="nav-main-link-name">Add New</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              
               <li class="nav-main-item">
                 <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                   <i class="nav-main-link-icon si si-puzzle"></i>
@@ -522,8 +637,10 @@
 
   
     <script src="{{ asset('app/js/oneui.app.min.js') }}"></script>
+    <script src="{{ asset("app/js/lib/jquery.min.js") }}"></script>
+    <script src="{{ asset('app/js/plugins/slick-carousel/slick.min.js') }}"></script>
 
     <!-- Page JS Code -->
-    <script src="{{ asset('app/js/pages/be_pages_dashboard_v1.min.js') }}"></script>
+
   </body>
 </html>

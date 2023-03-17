@@ -19,6 +19,17 @@ class RequestSender {
      */
     public static function sendRequest(array $headers, string $url, array $body, $method) {
 
+       try {
+
+        return self::send($headers, $url, $body, $method);
+
+       } catch (\Throwable $th) {
+        //throw $th;
+       }
+    }
+
+    private static function send(array $headers, string $url, array $body, $method) {
+
         switch ($method) {
             case 'POST':
                 return Http::withHeaders($headers)->post($url, $body);

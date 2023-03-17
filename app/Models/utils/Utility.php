@@ -95,4 +95,10 @@ class Utility {
         'EXPIRED' => -6,
     ];
 
+    public const SUPPORT_TICKET_STATUS = [
+        'open' => 'OPEN',
+        'closed' => 'CLOSED',
+        'suspended' => 'SUSPENDED'
+    ];
+
 }

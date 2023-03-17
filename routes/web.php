@@ -6,6 +6,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExchangeRateController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RolesController;
+use App\Http\Controllers\SupportTicketController;
+use App\Http\Controllers\SupportTicketMessageController;
 use App\Http\Controllers\UserAccountController;
 use App\Http\Controllers\UserKycController;
 use Illuminate\Support\Facades\Route;
@@ -149,6 +151,32 @@ Route::prefix('/dashboard')->middleware(['auth', 'verified', 'account_open'])->g
             
             Route::delete('/remove/{id}', [RolesController::class, 'destroy'])
                 ->name('roles.remove');
+        });
+
+        Route::prefix('/support')->group(function() {
+
+            Route::prefix('/tickets')->group(function() {
+
+                Route::get('/', [SupportTicketController::class, 'index'])
+                    ->name('support.ticket.all');
+
+                Route::get('/new', [SupportTicketController::class, 'create'])
+                    ->name('support.message.create');
+                
+                Route::post('/store', [SupportTicketController::class, 'store'])
+                    ->name('support.message.store');
+
+            });
+
+            Route::prefix('/messages')->group(function() {
+
+                Route::get('/', [SupportTicketMessageController::class, 'index'])
+                    ->name('support.message.all');
+                
+                Route::post('/reply', [SupportTicketMessageController::class, 'store'])
+                    ->name('support.message.reply');
+                
+            }); 
         });
     });
 

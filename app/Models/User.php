@@ -94,4 +94,8 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(Currency::class);
     }
 
+    public function supportTickets() {
+        return $this->hasMany(SupportTicket::class);
+    }
+
 }
