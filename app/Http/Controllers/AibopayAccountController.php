@@ -53,7 +53,7 @@ class AibopayAccountController extends Controller
 
         // dd($createAccountResponse);
 
-        if($createAccountResponse->successful() AND $createAccountResponse->status() === 200) {
+        if($createAccountResponse AND $createAccountResponse->successful() AND $createAccountResponse->status() === 200) {
 
             //Create new monnify account resource
             MonnifyAccount::create(

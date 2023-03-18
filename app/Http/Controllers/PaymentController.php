@@ -25,7 +25,7 @@ class PaymentController extends Controller
             "GET"
         );
 
-       if($getBanksRequest->successful() AND $getBanksRequest->status() === 200) {
+       if($getBanksRequest AND $getBanksRequest->successful() AND $getBanksRequest->status() === 200) {
 
             $ussds = $getBanksRequest->json()['responseBody'];
 

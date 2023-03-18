@@ -2,7 +2,14 @@
 
 namespace App\Models\utils;
 
+use App\Models\monnify\MonnifyConfig;
+use App\Models\monnify\MonnifyCredentials;
+use Exception;
+use GuzzleHttp\Exception\RequestException;
+use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 
 class RequestSender {
 
@@ -24,31 +31,97 @@ class RequestSender {
         return self::send($headers, $url, $body, $method);
 
        } catch (\Throwable $th) {
-        //throw $th;
+        return back(405)->with('error', $th->getMessage());
        }
     }
 
     private static function send(array $headers, string $url, array $body, $method) {
 
         switch ($method) {
-            case 'POST':
-                return Http::withHeaders($headers)->post($url, $body);
+            case 'POST': {
+
+                $response = Http::withHeaders($headers)->post($url, $body);
+
+                if($response->status() === 401) {
+                    
+                    $newToken = MonnifyConfig::getAccessToken();
+                    Storage::disk('local')->put('token.txt', MonnifyConfig::getAccessToken());
+        
+                    $newHeader = ['Authorization' => $newToken];
+        
+                    return Http::withHeaders($newHeader)->post($url, $body);
+                    break;
+        
+                }
+        
+                return $response;
                 break;
+            }
             
-            case 'GET':
-                return Http::withHeaders($headers)->get($url, $body);
+            case 'GET': {
+
+                $response = Http::withHeaders($headers)->get($url, $body);
+
+                if($response->status() === 401) {
+                    
+                    $newToken = MonnifyConfig::getAccessToken();
+                    Storage::disk('local')->put('token.txt', MonnifyConfig::getAccessToken());
+        
+                    $newHeader = ['Authorization' => $newToken];
+        
+                    return Http::withHeaders($newHeader)->get($url, $body);
+                    break;
+        
+                }
+        
+                return $response;
                 break;
+            }
+                
             
-            case 'PUT':
-                return Http::withHeaders($headers)->put($url, $body);
+            case 'PUT': {
+                $response = Http::withHeaders($headers)->put($url, $body);
+
+                if($response->status() === 401) {
+                    
+                    $newToken = MonnifyConfig::getAccessToken();
+                    Storage::disk('local')->put('token.txt', MonnifyConfig::getAccessToken());
+        
+                    $newHeader = ['Authorization' => $newToken];
+        
+                    return Http::withHeaders($newHeader)->put($url, $body);
+                    break;
+        
+                }
+        
+                return $response;
                 break;
+            }
+              
             
-            case 'DELETE':
-                return Http::withHeaders($headers)->delete($url, $body);
+            case 'DELETE': {
+
+                $response = Http::withHeaders($headers)->delete($url, $body);
+
+                if($response->status() === 401) {
+                    
+                    $newToken = MonnifyConfig::getAccessToken();
+                    Storage::disk('local')->put('token.txt', MonnifyConfig::getAccessToken());
+        
+                    $newHeader = ['Authorization' => $newToken];
+        
+                    return Http::withHeaders($newHeader)->delete($url, $body);
+                    break;
+        
+                }
+        
+                return $response;
                 break;
+            }
+                
 
             default:
-                # code...
+                throw new BadRequestException("Method not Supported", 405);
                 break;
         }
         
