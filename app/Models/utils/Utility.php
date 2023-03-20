@@ -27,7 +27,8 @@ class Utility {
         'user' => [
             'user_view',
             'user_delete',
-            'user_edit'
+            'user_edit',
+            'user_admin'
         ],
         'kyc' => [
             'kyc_view',

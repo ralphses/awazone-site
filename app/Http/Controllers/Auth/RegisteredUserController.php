@@ -7,6 +7,7 @@ use App\Models\Currency;
 use App\Models\Roles;
 use App\Models\User;
 use App\Models\UserAddress;
+use App\Models\utils\Utility;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Nette\Utils\Random;
 
 class RegisteredUserController extends Controller
 {
@@ -48,16 +50,17 @@ class RegisteredUserController extends Controller
 
         $mainCurrency = Currency::where('code', 'NGN')->get()->first() ?? Currency::create(['name' => 'Nigerian Naira', 'code' => "NGN", 'added_by' => 'Admin']);
 
+        $usernme = substr($request->email, 0, strpos($request->email, '@')) . Random::generate(4);
         //Create this user
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'roles_id' => $userRole->id,
-            'referral_code' => substr($request->email, 0, strpos($request->email, '@')),
+            'referral_code' => $usernme,
             'referred_by' => $userReferrer,
             'is_locked' => false,
-            'username' => substr($request->email, 0, strpos($request->email, '@')),
+            'username' => $usernme,
             'main_currency' => $mainCurrency->id
 
         ]);
@@ -66,8 +69,6 @@ class RegisteredUserController extends Controller
         UserAddress::create(['user_id' => $user->id]);
 
         event(new Registered($user));
-
-        Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
     }

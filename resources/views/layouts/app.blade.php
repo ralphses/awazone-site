@@ -170,6 +170,9 @@
                 </a>
               </li>
               <li class="nav-main-heading">Heading</li>
+
+              @can('isUser', \App\Models\User::class)
+
               <li class="nav-main-item">
                 <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                   <i class="nav-main-link-icon si si-puzzle"></i>
@@ -199,6 +202,7 @@
                 </ul>
               </li>
 
+                
               <li class="nav-main-item">
                 <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                   <i class="nav-main-link-icon si si-puzzle"></i>
@@ -297,6 +301,9 @@
                   </li>
                 </ul>
               </li>
+              @endcan
+
+              @can('isUser', \App\Models\User::class)
               
               <li class="nav-main-item">
                 <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
@@ -314,13 +321,16 @@
                       <span class="nav-main-link-name">Office</span>
                     </a>
                   </li>
-                  <li class="nav-main-item">
-                    <a class="nav-main-link" href="{{ route('support.ticket.all') }}">
-                      <span class="nav-main-link-name">Support Requests</span>
-                    </a>
+                  @can('isAdmin', \App\Models\User::class)
+                    <li class="nav-main-item">
+                      <a class="nav-main-link" href="{{ route('support.ticket.all') }}">
+                        <span class="nav-main-link-name">Support Requests</span>
+                      </a>
                   </li>
+                  @endcan
                 </ul>
               </li>
+
 
               <li class="nav-main-item">
                 <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
@@ -338,6 +348,8 @@
                       <span class="nav-main-link-name">Others</span>
                     </a>
                   </li>
+                  @can('isAdmin', \App\Models\User::class)
+                    
                   <li class="nav-main-item">
                     <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                       <span class="nav-main-link-name">Newsletters</span>
@@ -355,15 +367,14 @@
                       </li>
                     </ul>
                   </li>
+                  @endcan
+
                 </ul>
               </li>
+              @endcan
 
-              <li class="nav-main-item">
-                <a class="nav-main-link" href="">
-                  <i class="nav-main-link-icon si si-speedometer"></i>
-                  <span class="nav-main-link-name">Testimonials</span>
-                </a>
-              </li>
+
+              @can('isAdmin', \App\Models\User::class)
 
               <li class="nav-main-item">
                 <a class="nav-main-link" href="{{ route('users.all') }}">
@@ -446,6 +457,16 @@
                   </li>
                 </ul>
               </li>
+
+              <li class="nav-main-item">
+                <a class="nav-main-link" href="">
+                  <i class="nav-main-link-icon si si-speedometer"></i>
+                  <span class="nav-main-link-name">Testimonials</span>
+                </a>
+              </li>
+
+              @endcan
+
 
               <li class="nav-main-item">
                 <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">

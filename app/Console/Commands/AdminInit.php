@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Currency;
 use App\Models\Roles;
 use App\Models\User;
 use App\Models\UserAddress;
@@ -32,23 +33,17 @@ class AdminInit extends Command
      */
     public function handle(): void
     {
-        $userRole = Roles::where('name', 'super admin')->get();
-
-        $te = !$userRole;
-
-        echo $te;
+        $userRole = Roles::where('name', 'Super Admin')->get();
         
         if($userRole->count() < 1) {
 
-            
-        $authorities = Utility::USER_AUTHORITIES;
+            $authorities = Utility::USER_AUTHORITIES;
 
-        $allAuthorities = $this->createAdminAuthurities($authorities);
-
-        $userAddress = UserAddress::create([]);
+            $allAuthorities = $this->createAdminAuthurities($authorities);
+            $mainCurrency = Currency::where('code', 'NGN')->get()->first() ?? Currency::create(['name' => 'Nigerian Naira', 'code' => "NGN", 'added_by' => 'Admin']);
             
             $userRole = Roles::create([
-                'name' => 'super admin', 
+                'name' => 'Super Admin', 
                 'token' => uniqid(),
                 'description' => 'Overall Admin of this application',
                 'authorities' => $allAuthorities
@@ -59,9 +54,11 @@ class AdminInit extends Command
                 'name' => str_replace('|', ' ', env('APP_ADMIN_NAME')),
                 'email' => env('APP_ADMIN_EMAIL'),
                 'password' => Hash::make(env('APP_ADMIN_PASSWORD')),
-                'address_id' => $userAddress->id,
-                'roles_id' => $userRole->id
+                'roles_id' => $userRole->id,
+                'main_currency' => $mainCurrency->id
             ]);
+
+            UserAddress::create(['user_id' => $user->id]);
     
             event(new Registered($user));
         }
@@ -72,8 +69,10 @@ class AdminInit extends Command
 
         $allAuthorities = "";
 
-        foreach($authorities as $key => $value) {
-            $allAuthorities .= implode('|', $value);
+        foreach(array_values($authorities) as $key => $value) {
+            
+            $allAuthorities .= implode('|', $value) . "|";
+
         }
 
         return $allAuthorities;

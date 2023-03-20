@@ -12,7 +12,7 @@ class RolesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $roles = Roles::paginate(10);
         $pages = $roles->getUrlRange(1, $roles->lastPage());

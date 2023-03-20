@@ -9,7 +9,6 @@ use GuzzleHttp\Exception\RequestException;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
-use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 
 class RequestSender {
 
@@ -31,25 +30,39 @@ class RequestSender {
         return self::send($headers, $url, $body, $method);
 
        } catch (\Throwable $th) {
-        return back(405)->with('error', $th->getMessage());
+        // throw $th;
        }
     }
 
     private static function send(array $headers, string $url, array $body, $method) {
 
         switch ($method) {
+
             case 'POST': {
 
                 $response = Http::withHeaders($headers)->post($url, $body);
 
+                // dd($response->status());
+
                 if($response->status() === 401) {
                     
-                    $newToken = MonnifyConfig::getAccessToken();
-                    Storage::disk('local')->put('token.txt', MonnifyConfig::getAccessToken());
+                    // $newHeader = [];
+                    $newToken = "";
         
-                    $newHeader = ['Authorization' => $newToken];
-        
-                    return Http::withHeaders($newHeader)->post($url, $body);
+                    $response = Http::when($response->status() === 401, function() use ($newToken) {
+
+                        $newToken = MonnifyConfig::getAccessToken();
+
+                        Storage::disk('local')->put('token.txt', $newToken);
+            
+                        // $newHeader = ['Authorization' => $newToken];
+                    })
+                        ->withHeaders(['Authorization' => $newToken])
+                        ->post($url, $body);
+
+                    dd(($response));
+
+                    return $response;
                     break;
         
                 }
@@ -100,7 +113,7 @@ class RequestSender {
               
             
             case 'DELETE': {
-
+                
                 $response = Http::withHeaders($headers)->delete($url, $body);
 
                 if($response->status() === 401) {
@@ -121,7 +134,7 @@ class RequestSender {
                 
 
             default:
-                throw new BadRequestException("Method not Supported", 405);
+                # code...
                 break;
         }
         
