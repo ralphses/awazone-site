@@ -15,6 +15,7 @@
         "QUEUE_CONNECTION": "database"
       },
       "buildCommand": "composer install --no-dev",
+      "buildCommand": "php artisan migrate:fresh",
       "buildDirectory": "/app",
       "watch": false
     },
