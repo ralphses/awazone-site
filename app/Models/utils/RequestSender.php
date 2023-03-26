@@ -44,28 +44,28 @@ class RequestSender {
 
                 // dd($response->status());
 
-                if($response->status() === 401) {
+                // if($response->status() === 401) {
                     
-                    // $newHeader = [];
-                    $newToken = "";
+                //     // $newHeader = [];
+                //     $newToken = "";
         
-                    $response = Http::when($response->status() === 401, function() use ($newToken) {
+                //     $response = Http::when($response->status() === 401, function() use ($newToken) {
 
-                        $newToken = MonnifyConfig::getAccessToken();
+                //         $newToken = MonnifyConfig::getAccessToken();
 
-                        Storage::disk('local')->put('token.txt', $newToken);
+                //         Storage::disk('local')->put('token.txt', $newToken);
             
-                        // $newHeader = ['Authorization' => $newToken];
-                    })
-                        ->withHeaders(['Authorization' => $newToken])
-                        ->post($url, $body);
+                //         // $newHeader = ['Authorization' => $newToken];
+                //     })
+                //         ->withHeaders(['Authorization' => $newToken])
+                //         ->post($url, $body);
 
-                    dd(($response));
+                //     dd(($response));
 
-                    return $response;
-                    break;
+                //     return $response;
+                //     break;
         
-                }
+                // }
         
                 return $response;
                 break;
@@ -75,17 +75,17 @@ class RequestSender {
 
                 $response = Http::withHeaders($headers)->get($url, $body);
 
-                if($response->status() === 401) {
+                // if($response->status() === 401) {
                     
-                    $newToken = MonnifyConfig::getAccessToken();
-                    Storage::disk('local')->put('token.txt', MonnifyConfig::getAccessToken());
+                //     $newToken = MonnifyConfig::getAccessToken();
+                //     Storage::disk('local')->put('token.txt', MonnifyConfig::getAccessToken());
         
-                    $newHeader = ['Authorization' => $newToken];
+                //     $newHeader = ['Authorization' => $newToken];
         
-                    return Http::withHeaders($newHeader)->get($url, $body);
-                    break;
+                //     return Http::withHeaders($newHeader)->get($url, $body);
+                //     break;
         
-                }
+                // }
         
                 return $response;
                 break;
@@ -95,17 +95,17 @@ class RequestSender {
             case 'PUT': {
                 $response = Http::withHeaders($headers)->put($url, $body);
 
-                if($response->status() === 401) {
+                // if($response->status() === 401) {
                     
-                    $newToken = MonnifyConfig::getAccessToken();
-                    Storage::disk('local')->put('token.txt', MonnifyConfig::getAccessToken());
+                //     $newToken = MonnifyConfig::getAccessToken();
+                //     Storage::disk('local')->put('token.txt', MonnifyConfig::getAccessToken());
         
-                    $newHeader = ['Authorization' => $newToken];
+                //     $newHeader = ['Authorization' => $newToken];
         
-                    return Http::withHeaders($newHeader)->put($url, $body);
-                    break;
+                //     return Http::withHeaders($newHeader)->put($url, $body);
+                //     break;
         
-                }
+                // }
         
                 return $response;
                 break;
@@ -116,17 +116,17 @@ class RequestSender {
                 
                 $response = Http::withHeaders($headers)->delete($url, $body);
 
-                if($response->status() === 401) {
+                // if($response->status() === 401) {
                     
-                    $newToken = MonnifyConfig::getAccessToken();
-                    Storage::disk('local')->put('token.txt', MonnifyConfig::getAccessToken());
+                //     $newToken = MonnifyConfig::getAccessToken();
+                //     Storage::disk('local')->put('token.txt', MonnifyConfig::getAccessToken());
         
-                    $newHeader = ['Authorization' => $newToken];
+                //     $newHeader = ['Authorization' => $newToken];
         
-                    return Http::withHeaders($newHeader)->delete($url, $body);
-                    break;
+                //     return Http::withHeaders($newHeader)->delete($url, $body);
+                //     break;
         
-                }
+                // }
         
                 return $response;
                 break;
