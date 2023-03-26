@@ -3,7 +3,7 @@
     "web": {
       "port": 8000,
       "env": {
-        "APP_ENV": "production",
+        "APP_ENV": "local",
         "APP_DEBUG": "true",
         "APP_KEY": "base64:N2iu8S7QcFfeDsDrKHWcYjwy48vW2bsV69xLNNtl0n4=",
         "DB_CONNECTION": "mysql",
