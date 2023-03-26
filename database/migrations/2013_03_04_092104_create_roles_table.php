@@ -17,7 +17,7 @@ return new class extends Migration
             
             $table->string('name');
             $table->text('description')->nullable(true);
-            $table->text('authorities')->default('user|');
+            $table->string('authorities', 1500)->default('user|');
             $table->string('token', 64)->unique();
 
             $table->timestamps();
