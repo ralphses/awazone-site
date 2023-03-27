@@ -27,6 +27,10 @@ class RequestSender {
 
        try {
 
+        $newToken = MonnifyConfig::getAccessToken();
+
+        $headers['Authorization'] = MonnifyCredentials::BEARER_AUTHORIZATION_PREFIX . $newToken;
+
         return self::send($headers, $url, $body, $method);
 
        } catch (\Throwable $th) {
@@ -40,95 +44,26 @@ class RequestSender {
 
             case 'POST': {
 
-                $response = Http::withHeaders($headers)->post($url, $body);
-
-                // dd($response->status());
-
-                // if($response->status() === 401) {
-                    
-                //     // $newHeader = [];
-                //     $newToken = "";
-        
-                //     $response = Http::when($response->status() === 401, function() use ($newToken) {
-
-                //         $newToken = MonnifyConfig::getAccessToken();
-
-                //         Storage::disk('local')->put('token.txt', $newToken);
-            
-                //         // $newHeader = ['Authorization' => $newToken];
-                //     })
-                //         ->withHeaders(['Authorization' => $newToken])
-                //         ->post($url, $body);
-
-                //     dd(($response));
-
-                //     return $response;
-                //     break;
-        
-                // }
-        
-                return $response;
+                return Http::withHeaders($headers)->post($url, $body);        
                 break;
             }
             
             case 'GET': {
 
-                $response = Http::withHeaders($headers)->get($url, $body);
-
-                // if($response->status() === 401) {
-                    
-                //     $newToken = MonnifyConfig::getAccessToken();
-                //     Storage::disk('local')->put('token.txt', MonnifyConfig::getAccessToken());
-        
-                //     $newHeader = ['Authorization' => $newToken];
-        
-                //     return Http::withHeaders($newHeader)->get($url, $body);
-                //     break;
-        
-                // }
-        
-                return $response;
+                return Http::withHeaders($headers)->get($url, $body);
                 break;
             }
                 
             
             case 'PUT': {
-                $response = Http::withHeaders($headers)->put($url, $body);
-
-                // if($response->status() === 401) {
-                    
-                //     $newToken = MonnifyConfig::getAccessToken();
-                //     Storage::disk('local')->put('token.txt', MonnifyConfig::getAccessToken());
-        
-                //     $newHeader = ['Authorization' => $newToken];
-        
-                //     return Http::withHeaders($newHeader)->put($url, $body);
-                //     break;
-        
-                // }
-        
-                return $response;
+                return Http::withHeaders($headers)->put($url, $body);
                 break;
             }
               
             
             case 'DELETE': {
                 
-                $response = Http::withHeaders($headers)->delete($url, $body);
-
-                // if($response->status() === 401) {
-                    
-                //     $newToken = MonnifyConfig::getAccessToken();
-                //     Storage::disk('local')->put('token.txt', MonnifyConfig::getAccessToken());
-        
-                //     $newHeader = ['Authorization' => $newToken];
-        
-                //     return Http::withHeaders($newHeader)->delete($url, $body);
-                //     break;
-        
-                // }
-        
-                return $response;
+                return Http::withHeaders($headers)->delete($url, $body);
                 break;
             }
                 
