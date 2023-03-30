@@ -3,7 +3,7 @@
       <h3 class="block-title">MAKE ENQUIRY</h3>
     </div>
     <div class="block-content block-content-full">
-      <form action="{{ route('support.message.store') }}" method="POST">
+      <form action="{{ route('support.message.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row push">
           <div class="col-lg-4">
@@ -32,7 +32,7 @@
             </div>
 
             <div class="mb-4">
-                <label class="form-label" for="example-file-input">Phone</label>
+                <label class="form-label" for="example-file-input">Phone Number</label>
                 <input class="form-control" type="text" value="{{ Auth::user()->address->phone ?? old('message_phone') }}" id="example-file-input" name="message_phone">
                 
                 @if($errors->any('message_phone'))
@@ -58,6 +58,12 @@
                     <p style="color: red; font-size: medium">{{$errors->first('message')}}</p>
                 @endif
             </div>
+
+            <div class="mb-4">
+              <label class="form-label" for="example-file-input">Attach a file</label>
+              <input class="form-control" type="file" id="example-file-input" name="message_attachment">
+              
+          </div>
 
             <div class="mb-4">
                 <input type="submit" class="btn btn-primary" value="Send Message">

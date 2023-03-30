@@ -9,7 +9,7 @@ class SupportTicket extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['ticket_id', 'subject', 'status', 'message', 'name', 'email', 'phone'];
+    protected $fillable = ['ticket_id', 'subject', 'status', 'message', 'name', 'email', 'phone', "attachment"];
 
     public function supportTicketMessages() {
         return $this->hasMany(SupportTicketMessage::class, 'ticket_id');

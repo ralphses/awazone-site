@@ -8,6 +8,8 @@ use App\Models\Roles;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class UserAccountController extends Controller
 {
@@ -48,17 +50,27 @@ class UserAccountController extends Controller
     public function update(ProfileUpdateRequest $request) {
 
         //Get AUthenticated User
-        $user = User::find(Auth::user()->id);
+        $user = User::find($request->user()->id);
 
-        //Get user uploaded images
-        $image = $request->file('user_image');
-        
+        if(!$user->image_path) {
+            $request->validate(['user_image' => ['required', Rule::imageFile()]]);
+        }
+
+        $hasImage = $request->hasFile('user_image');
+
+        //Delete previous image
+        if($hasImage AND $user->image_path AND Storage::has($user->image_path)) {
+            Storage::delete($user->image_path);
+        }
+       
         //Update user
         $user->update([
+            'username' => $request->get('user_name'),
             'date_of_birth' => $request->get('user_date_of_birth'),
             'main_currency' => $request->get('user_currency'),
-            'image_path' => $image->store('public/users/images'),
+            'image_path' => $hasImage ? $request->file('user_image')->store('public/users/images') : $user->image_path
         ]);
+        
 
         $address = $user->address;
 
@@ -76,6 +88,10 @@ class UserAccountController extends Controller
         
         return redirect()->route('dashboard.home');
     }
+
+    /**
+     * Function to search for users
+     */
 
     public function search(Request $request) {
         $query = $request->get('query');

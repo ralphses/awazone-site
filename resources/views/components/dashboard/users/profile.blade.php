@@ -35,16 +35,6 @@
             </div>
 
             <div class="form-floating mb-4">
-                <input type="text" class="form-control" id="example-text-input-readonly-floating" name="user_name" placeholder="Enter a Full Name here" value="{{ Auth::user()->username }}" readonly="" disabled>
-                <label for="example-text-input-readonly-floating">Username (readonly)</label>
-                
-                @if($errors->any('user_name'))
-                  <p style="color: red; font-size: medium">{{$errors->first('user_name')}}</p>
-                @endif
-                
-            </div>
-
-            <div class="form-floating mb-4">
                 <input type="text" class="form-control" id="example-text-input-readonly-floating" name="user_account_status" placeholder="Enter a Full Name here" value="{{ Auth::user()->is_locked ? "Disabled" : "Enabled" }}" readonly="" disabled>
                 <label for="example-text-input-readonly-floating">Account status (readonly)</label>
                 
@@ -63,6 +53,17 @@
                 @endif
                 
             </div>
+
+            
+          <div class="form-floating mb-4">
+              <input type="text" class="form-control" id="example-text-input-readonly-floating" name="user_name" placeholder="Enter a Full Name here" value="{{ Auth::user()->username }}">
+              <label for="example-text-input-readonly-floating">Username</label>
+              
+              @if($errors->any('user_name'))
+                <p style="color: red; font-size: medium">{{$errors->first('user_name')}}</p>
+              @endif
+              
+          </div>
 
             <div class="form-floating mb-4">
                 <input type="date" class="form-control" id="example-text-input-readonly-floating" name="user_date_of_birth" placeholder="" value="{{ Auth::user()->date_of_birth ?? old('user_date_of_birth') }}" >

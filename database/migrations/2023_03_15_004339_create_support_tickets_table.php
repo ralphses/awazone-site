@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone');
             $table->text('message');
+            $table->text('attachment');
             $table->string('status')->default(Utility::SUPPORT_TICKET_STATUS['open']);
 
             $table->timestamps();

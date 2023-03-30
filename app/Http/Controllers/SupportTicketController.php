@@ -38,6 +38,8 @@ class SupportTicketController extends Controller
     {
         $request->validated();
 
+        $attachment = $request->hasFile("message_attachment") ? $request->file("message_attachment") : "";
+
         try {
             $ticket = SupportTicket::create([
                 'ticket_id' => Random::generate(10, '0-9A-Z'),
@@ -46,6 +48,8 @@ class SupportTicketController extends Controller
                 'name' => $request->get('message_name'),
                 'email' => $request->get('message_email'),
                 'phone' => $request->get('message_phone'),
+                'attachment' => $attachment->store('public/attachements'),
+
             ]);
 
             SupportTicketMessage::create([
@@ -56,7 +60,7 @@ class SupportTicketController extends Controller
 
             return redirect()->route('dashboard.home')->with('success', 'Message sent! A ticket ID have been created for this enquiry');
         } catch (\Throwable $th) {
-            //throw $th;
+            dd($th->getMessage());
         }
     }
 

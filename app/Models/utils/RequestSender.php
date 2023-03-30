@@ -7,6 +7,7 @@ use App\Models\monnify\MonnifyCredentials;
 use Exception;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Http\Client\PendingRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 
@@ -31,10 +32,17 @@ class RequestSender {
 
         $headers['Authorization'] = MonnifyCredentials::BEARER_AUTHORIZATION_PREFIX . $newToken;
 
-        return self::send($headers, $url, $body, $method);
+        $response = self::send($headers, $url, $body, $method);
+        
+        if($response->status() === 422) {
+            self::send($headers, MonnifyCredentials::DELETE_VIRTUAL_ACCOUNT . Auth::user()->username, [], 'DELETE');
+            $response = self::send($headers, $url, $body, $method);
+        }
+        
+        return $response;
 
        } catch (\Throwable $th) {
-        // throw $th;
+        // dd($th->getMessage());
        }
     }
 

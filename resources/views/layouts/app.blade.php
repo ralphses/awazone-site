@@ -232,7 +232,7 @@
                       </li>
                       <li class="nav-main-item">
                         <a class="nav-main-link" href="javascript:void(0)">
-                          <span class="nav-main-link-name">Swap or Trade</span>
+                          <span class="nav-main-link-name">Trade</span>
                         </a>
                       </li>
                     </ul>
